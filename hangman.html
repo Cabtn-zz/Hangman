@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Hangman</title>
+			<script>
+		
+				document.onkeyup = function(event) 
+				{
+        			var userGuess = event.key;
+        			var alphabet = ["a", "b", "c", "d", "e", "f", "g"];
+        			console.log(userGuess);
+
+        			for (i = 0; i < alphabet.length; i++ )
+        			{
+        				if (userGuess === alphabet[i]){
+        					console.log("we found you!");
+        					alphabet.splice(userGuess);
+        					console.log(alphabet);
+        					}
+        				else 
+        				{
+        					console.log("we didn't find you");
+        				}
+        			}	
+        		}
+
+                        //Will likely need 3 arrays. 
+                                //alphabet array
+                                //aray for guessed letters, empty initially, return if true or false
+                                //correct and incorrect guesses
+                                //
+
+
+			</script>
+
+
+	</head>
+
+	<body>
+
+	</body>
+</html>
