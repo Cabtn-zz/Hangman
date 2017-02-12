@@ -3,23 +3,26 @@
 	<head>
 		<title>Hangman</title>
 			<script>
-		
-				document.onkeyup = function(event) 
-				{
+		var alphabet = ["a", "b", "c", "d", "e", "f", "g"];
+                var lives = 10;
+			document.onkeyup = function(event) 
+			{
         			var userGuess = event.key;
-        			var alphabet = ["a", "b", "c", "d", "e", "f", "g"];
         			console.log(userGuess);
 
         			for (i = 0; i < alphabet.length; i++ )
         			{
         				if (userGuess === alphabet[i]){
         					console.log("we found you!");
-        					alphabet.splice(userGuess);
+                                                console.log(i)  
+        					alphabet.splice(i,1);
         					console.log(alphabet);
         					}
         				else 
         				{
         					console.log("we didn't find you");
+                                                lives = lives - 1;
+                                                document.write(lives);
         				}
         			}	
         		}
