@@ -3,10 +3,26 @@ img {
 }
 
 body {
-	background-image: url(star.jpg);
+	background-image: url(assets/falcon.jpg);
+	background-size: cover;
 }
 div {
-	color: white;
+	color:white;
 	font-weight: bolder;
-	line-height: 75px;
+	line-height: 40px;
+}
+
+embed {
+	width:1px;
+	height: 0px;
+}
+
+@font-face {
+	font-family:"STARWARS"; 
+	src:url("Starjedi.ttf"); 
+	}
+
+p {
+	font-family:"STARWARS";
+	font-size: 26px;
 }
