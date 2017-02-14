@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <title>Hangman</title>
+        <script>
+        var createPlaceholder = function(wordLength) {
+        var currentState = '';
+        for (var i = 0; i < wordLength; i++) {
+        currentState += '-';
+        }
+        return currentState;
+        }
+
+        var word = "Kabir";
+        var wordLength = word.length;
+        var lives = 10;
+        var lettersGuessed = [];
+        var currentState = createPlaceholder(wordLength);
+
+        while (lives > 0 && currentState.indexOf('-') > -1) {
+        var userGuess = prompt("Please enter a letter.") || '';
+        userGuess = userGuess.toLowerCase();
+                //If they have never guess this before then let's do this
+        if (userGuess === '') break;
+        if (lettersGuessed.indexOf(userGuess) === -1) {
+                lettersGuessed.push(userGuess);
+                var wasPresent = false;
+                                //Puts user case into currentState
+                            for (var i = 0; i < wordLength; i++) {
+                                var letterAtIndex = word.charAt(i) || '';
+                              
+                              if (letterAtIndex.toLowerCase() === userGuess.toLowerCase()) {
+                                currentState = currentState.substr(0, i) + letterAtIndex + currentState.substr(i+1, i + wordLength);
+                                
+                                wasPresent = true;
+                                console.log('YOURE RIGHT! ' + currentState);
+                              }
+                                }
+                                if (!wasPresent) {
+                                 lives--;
+                                console.log('Lives: ' + lives + ' currentState: ' + currentState);
+                                }
+                        } 
+                                else {
+                                        console.log('YOU ALREADY GUESSED THAT!');
+                                }     
+}
+
+</script>
+        </head>
+
+        <body>
+
+        </body>
+</html>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-        <head>
+	<head>
         <!-- Latest compiled and minified CSS -->
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -9,9 +9,9 @@
 
                 <!-- Latest compiled and minified JavaScript -->
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-                <title>Hangman</title>
-        <script>
-        var word = "base";
+		<title>Hangman</title>
+	<script>
+	var word = "base";
         var wordLength = word.length;
         var lives = 10;
         var lettersGuessed = []
@@ -26,14 +26,14 @@
         //Not sure why setting it here works, this has to do with scope
         var currentState = createPlaceholder(wordLength);
         //This is the keyup function that logs user's key press into userGuess
-                document.onkeyup = function(event) 
-                {
-                        var userGuess = event.key;
-                        console.log(userGuess);
+		document.onkeyup = function(event) 
+		{
+			var userGuess = event.key;
+			console.log(userGuess);
                                 //This adds UNGUESSED letters into the array if they are not in the array, hence the -1
-                                if (lettersGuessed.indexOf(userGuess) === -1) 
+				if (lettersGuessed.indexOf(userGuess) === -1) 
                                 {
-                                   console.log("Adding to box");
+			           console.log("Adding to box");
                                    var wasPresent = false;
                                         //This goes through the word and finds the index of the letter that has been guessed
                                         for (var i = 0; i < wordLength; i++)
@@ -57,9 +57,9 @@
                                                         console.log(lives);
                                                 }
                                                 else 
-                                                    {
-                                                           console.log("You've already guessed that word");
-                                                    }
+				                    {
+					                   console.log("You've already guessed that word");
+				                    }
 
                                                         var victory = function(){
                                                                 if (createPlaceholder(0)) {
@@ -71,13 +71,13 @@
                 }       
 
 
-        </script>
+	</script>
 
 
-        </head>
+	</head>
 
-        <body>
-<div class="text-center"><h1>Hangman</h1></div>       
+	<body>
+<div class="jumbotron text-center"><h1>Hangman</h1></div>       
         <div class ="container">
                 <div class="row text-center">
                         <div class="image">*IMG*</div>
@@ -109,5 +109,5 @@
 
 
 
-        </body>
+	</body>
 </html>
