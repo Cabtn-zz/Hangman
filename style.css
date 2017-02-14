@@ -1,0 +1,12 @@
+img {
+	width:500px;
+}
+
+body {
+	background-image: url(star.jpg);
+}
+div {
+	color: white;
+	font-weight: bolder;
+	line-height: 75px;
+}

@@ -4,19 +4,19 @@
         <!-- Latest compiled and minified CSS -->
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-                <!-- Optional theme -->
-                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+                <link rel="stylesheet" type="text/css" href="style.css">
 
-                <!-- Latest compiled and minified JavaScript -->
-                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
                 <title>Hangman</title>
         <script>
-        var word = "base";
+        var word = "Starship";
         var wordLength = word.length;
         var lives = 10;
         var lettersGuessed = []
+        var score = 0
         //Creates a function that makes ----- for the length of the word
         var createPlaceholder = function(wordLength) {
+        //Create an empty string var that we can add into, similar to lettersGuessed
         var currentState = '';
         for (var i = 0; i < wordLength; i++) {
         currentState += '-';
@@ -40,12 +40,13 @@
                                         {
                                         var correctGuess = word.charAt(i);
                                         //If it finds the match it will push it into the currentState
-                                                if (userGuess === correctGuess) 
+                                                if (userGuess.toLowerCase() === correctGuess.toLowerCase()) 
                                                 {
                                                 console.log("DING DING");
                                                 wasPresent = true;
                                                 currentState = currentState.substr(0, i) + correctGuess + currentState.substr(i+1, i + wordLength);
                                                 console.log(currentState)
+                                                document.getElementById("placeHolder").innerHTML = currentState;
                                                 }       
                                         }
                                                 //If te userGuess and the correctGuess do not match then it will detract a life and set it intot he box
@@ -53,19 +54,13 @@
                                                 {
                                                         lives = lives - 1;
                                                         lettersGuessed.push(userGuess);
-                                                        console.log(lettersGuessed);
-                                                        console.log(lives);
+                                                        document.getElementById("guessed").innerHTML = "Guessed " + "[" +lettersGuessed + "]";
+                                                        document.getElementById("lives").innerHTML ="Lives remaining: " + lives;
                                                 }
                                                 else 
                                                     {
                                                            console.log("You've already guessed that word");
                                                     }
-
-                                                        var victory = function(){
-                                                                if (createPlaceholder(0)) {
-                                                                        console.log("WIN!")
-                                                                }
-                                                        }
                                 }        
 
                 }       
@@ -77,10 +72,10 @@
         </head>
 
         <body>
-<div class="text-center"><h1>Hangman</h1></div>       
+<div class="jumbotron text-center"><h1>Hangman</h1></div>       
         <div class ="container">
                 <div class="row text-center">
-                        <div class="image">*IMG*</div>
+                        <div class="image"><img class="img-response" alt="Responsive image" src="http://kingofwallpapers.com/spaceship/spaceship-013.jpg"></div>
                 </div>
                 <div class="row text-center">
                         <div class="rules">Press any key to get started!</div>
@@ -89,12 +84,16 @@
                 <div class="row">
                         <div class="score text-center"> Wins......</div>
 
-                        <div class="word text-center">------------</div>
+                        <div class="word text-center" id="placeHolder">-------</div>
                 </div>
                 <div class="row">
-                        <div class="text-center">Number of lives remaining</div>
-                        <div class="lives text-center">LIVES</div>
-
+                        <div class="text-center" id="guessed">[]</div>
+                        <div class="text-center" id="lives">Lives Remaining: 10</div>
+        </div>
+        </div>
+        </body>
+        </html>
+        
 
 
 
