@@ -8,11 +8,41 @@
 
                 <title>Hangman</title>
         <script>
-        var word = "Starship";
+            // var hangman = {
+            //     word: "[Skywalker"],
+            //     wordLength: hangman.word.length,
+            //     lives: 10,
+            //     lettersGuessed: [],
+            //     score: 0,
+            //     victory: function() {
+            //         if (currentState === word){
+            //                 document.getElementById("win").innerHTML = "The Force is strong with this one";
+            //                 score= score++;
+            //                 document.getElementById("score").innerHTML = "Wins" + score;
+            //         }
+            //         else if (lives === 0) {
+            //                 document.getElementById('lose').innerHTML = "I AM YOUR FATHER! YOU LOSE!";
+            //         }
+            //     },
+
+            // };
+
+        function victory() {
+                if (currentState === word){
+                        var score = 0;
+                        document.getElementById("win").innerHTML = "The Force is strong with this one";
+                        score= score++;
+                        document.getElementById("score").innerHTML = "Wins " + score++;
+                }
+                else if (lives === 0) {
+                        document.getElementById('lose').innerHTML = "I AM YOUR FATHER! YOU LOSE!";
+
+                }
+        }
+        var word = "Skywalker";
         var wordLength = word.length;
         var lives = 10;
-        var lettersGuessed = []
-        var score = 0
+        var lettersGuessed = [];
         //Creates a function that makes ----- for the length of the word
         var createPlaceholder = function(wordLength) {
         //Create an empty string var that we can add into, similar to lettersGuessed
@@ -22,7 +52,7 @@
         }
         return currentState;
         }
-        //Not sure why setting it here works, this has to do with scope
+        
         var currentState = createPlaceholder(wordLength);
         //This is the keyup function that logs user's key press into userGuess
                 document.onkeyup = function(event) 
@@ -32,7 +62,6 @@
                                 //This adds UNGUESSED letters into the array if they are not in the array, hence the -1
                                 if (lettersGuessed.indexOf(userGuess) === -1) 
                                 {
-                                   console.log("Adding to box");
                                    var wasPresent = false;
                                         //This goes through the word and finds the index of the letter that has been guessed
                                         for (var i = 0; i < wordLength; i++)
@@ -46,15 +75,18 @@
                                                 currentState = currentState.substr(0, i) + correctGuess + currentState.substr(i+1, i + wordLength);
                                                 console.log(currentState)
                                                 document.getElementById("placeHolder").innerHTML = currentState;
+                                                victory();
+                                                
                                                 }       
                                         }
-                                                //If te userGuess and the correctGuess do not match then it will detract a life and set it intot he box
+                                                //If the userGuess and the correctGuess do not match then it will detract a life and set it in the box
                                                 if (!wasPresent) 
                                                 {
                                                         lives = lives - 1;
                                                         lettersGuessed.push(userGuess);
                                                         document.getElementById("guessed").innerHTML = "Guessed " + "[" +lettersGuessed + "]";
                                                         document.getElementById("lives").innerHTML ="Lives remaining: " + lives;
+                                                        victory();
                                                 }
                                                 else 
                                                     {
@@ -80,13 +112,15 @@
                 </div>
 
                 <div class="row">
-                        <div class="score text-center"> Wins......</div>
+                        <div class="score text-center" id="score"></div>
 
                         <div class="word text-center" id="placeHolder">-------</div>
                 </div>
                 <div class="row">
                         <div class="text-center" id="guessed">[]</div>
                         <div class="text-center" id="lives">Lives Remaining: 10</div>
+                        <div class="text-center" id="win"></div>
+                        <div class="text-center" id="lose"></div>
                 </div>
         </div>
         </body>
