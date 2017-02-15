@@ -5,103 +5,14 @@
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
                 <link rel="stylesheet" type="text/css" href="style.css">  
+                <script type="text/javascript" src="consolidated_code.js"></script>
 
                 <title>Hangman</title>
-        <script>
-            // var hangman = {
-            //     word: "[Skywalker"],
-            //     wordLength: hangman.word.length,
-            //     lives: 10,
-            //     lettersGuessed: [],
-            //     score: 0,
-            //     victory: function() {
-            //         if (currentState === word){
-            //                 document.getElementById("win").innerHTML = "The Force is strong with this one";
-            //                 score= score++;
-            //                 document.getElementById("score").innerHTML = "Wins" + score;
-            //         }
-            //         else if (lives === 0) {
-            //                 document.getElementById('lose').innerHTML = "I AM YOUR FATHER! YOU LOSE!";
-            //         }
-            //     },
-
-            // };
-
-        function victory() {
-                if (currentState === word){
-                        var score = 0;
-                        document.getElementById("win").innerHTML = "The Force is strong with this one";
-                        score= score++;
-                        document.getElementById("score").innerHTML = "Wins " + score++;
-                }
-                else if (lives === 0) {
-                        document.getElementById('lose').innerHTML = "I AM YOUR FATHER! YOU LOSE!";
-
-                }
-        }
-        var word = "Skywalker";
-        var wordLength = word.length;
-        var lives = 10;
-        var lettersGuessed = [];
-        //Creates a function that makes ----- for the length of the word
-        var createPlaceholder = function(wordLength) {
-        //Create an empty string var that we can add into, similar to lettersGuessed
-        var currentState = '';
-        for (var i = 0; i < wordLength; i++) {
-        currentState += '-';
-        }
-        return currentState;
-        }
-        
-        var currentState = createPlaceholder(wordLength);
-        //This is the keyup function that logs user's key press into userGuess
-                document.onkeyup = function(event) 
-                {
-                        var userGuess = event.key;
-                        console.log(userGuess);
-                                //This adds UNGUESSED letters into the array if they are not in the array, hence the -1
-                                if (lettersGuessed.indexOf(userGuess) === -1) 
-                                {
-                                   var wasPresent = false;
-                                        //This goes through the word and finds the index of the letter that has been guessed
-                                        for (var i = 0; i < wordLength; i++)
-                                        {
-                                        var correctGuess = word.charAt(i);
-                                        //If it finds the match it will push it into the currentState
-                                                if (userGuess.toLowerCase() === correctGuess.toLowerCase()) 
-                                                {
-                                                console.log("DING DING");
-                                                wasPresent = true;
-                                                currentState = currentState.substr(0, i) + correctGuess + currentState.substr(i+1, i + wordLength);
-                                                console.log(currentState)
-                                                document.getElementById("placeHolder").innerHTML = currentState;
-                                                victory();
-                                                
-                                                }       
-                                        }
-                                                //If the userGuess and the correctGuess do not match then it will detract a life and set it in the box
-                                                if (!wasPresent) 
-                                                {
-                                                        lives = lives - 1;
-                                                        lettersGuessed.push(userGuess);
-                                                        document.getElementById("guessed").innerHTML = "Guessed " + "[" +lettersGuessed + "]";
-                                                        document.getElementById("lives").innerHTML ="Lives remaining: " + lives;
-                                                        victory();
-                                                }
-                                                else 
-                                                    {
-                                                           console.log("You've already guessed that word");
-                                                    }
-                                }        
-
-                }       
-
-
-        </script>
+       
         </head>
 
         <body>
-<div class="text-center"><p>Hangman</p></div> 
+        <div class="text-center"><p>HangWars</p></div> 
 
         <div class ="container">
                 <div class="row text-center">
@@ -130,16 +41,3 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-        </body>
-</html>
