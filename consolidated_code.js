@@ -19,7 +19,7 @@ function victory() {
     var result = false;
     if (currentState === word){
             score = score + 1
-            document.getElementById("win").innerHTML = "The Force is strong with this one. KEEP TESTING YOU MUST";
+            document.getElementById("win").innerHTML = "The Force is strong with this one. Continue pressing keys";
             document.getElementById("score").innerHTML = "Wins " + score;   
             result = true;    
     }
